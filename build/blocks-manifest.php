@@ -62,12 +62,10 @@ return array(
 				'default' => 'full'
 			),
 			'title' => array(
-				'type' => 'string',
-				'default' => 'The Transformational Conversation Framework<sup>TM</sup> Challenge'
+				'type' => 'string'
 			),
 			'description' => array(
-				'type' => 'string',
-				'default' => '<p>How to Authentically Grow Your Team without Cold Prospecting… Using my Transformational Conversation Framework <sup>TM</sup></p>'
+				'type' => 'string'
 			),
 			'buttonPrimaryText' => array(
 				'type' => 'string',
