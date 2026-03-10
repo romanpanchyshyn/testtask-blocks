@@ -8,14 +8,11 @@
   "supports": {
     "html": false
   },
-
-  
   "attributes": {
     "align": {
       "type": "string",
       "default": "full"
     },
-
     "title": {
       "type": "string"
     },

@@ -43,7 +43,10 @@ $style = sprintf(
 >
 	<div class="wrap">
 		<?php if ($title) : ?>
-			<h2 class="section-title"><?php echo esc_html($title); ?></h2>
+		<h2 class="section-title" style="font-size: <?php echo esc_attr( $attributes['titleFontSize'] ); ?>px;">
+			<?php echo esc_html( $attributes['title'] ); ?>
+		</h2>
+
 		<?php endif; ?>
 
 		<?php if ($show_filters && !empty($terms) && !is_wp_error($terms)) : ?>

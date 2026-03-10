@@ -10,6 +10,7 @@ import {
 	TextControl,
 	ToggleControl,
 	RangeControl,
+	ColorPalette,
 	__experimentalUnitControl as UnitControl
 } from '@wordpress/components';
 import { ServerSideRender } from '@wordpress/server-side-render';
@@ -20,13 +21,19 @@ registerBlockType(metadata.name, {
 		const {
 			title,
 			postsPerPage,
+			titleFontSize,
 			showFilters,
 			paddingTop,
 			paddingBottom,
 			backgroundColor,
 		} = attributes;
 
-		const blockProps = useBlockProps();
+		const blockProps = useBlockProps({
+			className: 'alignfull',
+			style: {
+				backgroundColor: backgroundColor
+			}
+		});
 
 		return (
 			<>
@@ -36,6 +43,13 @@ registerBlockType(metadata.name, {
 							label={__('Section Title', 'testtask')}
 							value={title}
 							onChange={(value) => setAttributes({ title: value })}
+						/>
+						<RangeControl
+							label={__('Title Font Size', 'testtask')}
+							value={titleFontSize}
+							onChange={(value) => setAttributes({ titleFontSize: value })}
+							min={16}
+							max={72}
 						/>
 
 						<RangeControl
@@ -64,15 +78,21 @@ registerBlockType(metadata.name, {
 							onChange={(value) => setAttributes({ paddingBottom: value })}
 						/>
 
-						<TextControl
-							label={__('Background Color', 'testtask')}
-							value={backgroundColor}
-							onChange={(value) => setAttributes({ backgroundColor: value })}
-						/>
+						<div>
+							<p>{__('Background Color', 'testtask')}</p>
+
+							<ColorPalette
+								value={backgroundColor}
+								onChange={(color) =>
+									setAttributes({ backgroundColor: color })
+								}
+							/>
+						</div>
 					</PanelBody>
 				</InspectorControls>
 
 				<div {...blockProps}>
+
 					<ServerSideRender
 						block={metadata.name}
 						attributes={attributes}

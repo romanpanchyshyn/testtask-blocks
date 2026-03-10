@@ -6,16 +6,20 @@
   "icon": "awards",
   "description": "Benefits section with AJAX filter.",
   "supports": {
-    "html": false,
-    "align": [
-      "wide",
-      "full"
-    ]
+    "html": false
   },
   "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
     "title": {
       "type": "string",
       "default": "Some H2 title"
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": 48
     },
     "postsPerPage": {
       "type": "number",

@@ -9,16 +9,20 @@ return array(
 		'icon' => 'awards',
 		'description' => 'Benefits section with AJAX filter.',
 		'supports' => array(
-			'html' => false,
-			'align' => array(
-				'wide',
-				'full'
-			)
+			'html' => false
 		),
 		'attributes' => array(
+			'align' => array(
+				'type' => 'string',
+				'default' => 'full'
+			),
 			'title' => array(
 				'type' => 'string',
 				'default' => 'Some H2 title'
+			),
+			'titleFontSize' => array(
+				'type' => 'number',
+				'default' => 48
 			),
 			'postsPerPage' => array(
 				'type' => 'number',

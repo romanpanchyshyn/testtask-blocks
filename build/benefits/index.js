@@ -39,12 +39,18 @@ __webpack_require__.r(__webpack_exports__);
     const {
       title,
       postsPerPage,
+      titleFontSize,
       showFilters,
       paddingTop,
       paddingBottom,
       backgroundColor
     } = attributes;
-    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)();
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+      className: 'alignfull',
+      style: {
+        backgroundColor: backgroundColor
+      }
+    });
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -55,6 +61,14 @@ __webpack_require__.r(__webpack_exports__);
             onChange: value => setAttributes({
               title: value
             })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title Font Size', 'testtask'),
+            value: titleFontSize,
+            onChange: value => setAttributes({
+              titleFontSize: value
+            }),
+            min: 16,
+            max: 72
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Posts Per Page', 'testtask'),
             value: postsPerPage,
@@ -81,12 +95,15 @@ __webpack_require__.r(__webpack_exports__);
             onChange: value => setAttributes({
               paddingBottom: value
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'testtask'),
-            value: backgroundColor,
-            onChange: value => setAttributes({
-              backgroundColor: value
-            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'testtask')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
+              value: backgroundColor,
+              onChange: color => setAttributes({
+                backgroundColor: color
+              })
+            })]
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -183,7 +200,7 @@ module.exports = window["wp"]["serverSideRender"];
   \*********************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"testtask-core/benefits","title":"Benefits Section","category":"widgets","icon":"awards","description":"Benefits section with AJAX filter.","supports":{"html":false,"align":["wide","full"]},"attributes":{"title":{"type":"string","default":"Some H2 title"},"postsPerPage":{"type":"number","default":6},"showFilters":{"type":"boolean","default":true},"paddingTop":{"type":"string","default":"80px"},"paddingBottom":{"type":"string","default":"80px"},"backgroundColor":{"type":"string","default":"#ffffff"}},"editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"testtask-core/benefits","title":"Benefits Section","category":"widgets","icon":"awards","description":"Benefits section with AJAX filter.","supports":{"html":false},"attributes":{"align":{"type":"string","default":"full"},"title":{"type":"string","default":"Some H2 title"},"titleFontSize":{"type":"number","default":48},"postsPerPage":{"type":"number","default":6},"showFilters":{"type":"boolean","default":true},"paddingTop":{"type":"string","default":"80px"},"paddingBottom":{"type":"string","default":"80px"},"backgroundColor":{"type":"string","default":"#ffffff"}},"editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ }
 
