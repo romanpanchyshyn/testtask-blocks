@@ -37,7 +37,7 @@ $style = sprintf(
 	data-max-pages="<?php echo esc_attr((int) $query->max_num_pages); ?>"
 	data-current-term="all"
 	<?php echo get_block_wrapper_attributes([
-		'class' => 'benefits',
+		'class' => 'benefits alignfull',
 		'style' => $style,
 	]); ?>
 >

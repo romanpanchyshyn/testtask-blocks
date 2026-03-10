@@ -1,27 +1,21 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
 
-$title                 = $attributes['title'] ?? '';
-$description           = $attributes['description'] ?? '';
-$button_primary_text   = $attributes['buttonPrimaryText'] ?? '';
-$button_primary_url    = $attributes['buttonPrimaryUrl'] ?? '#';
-$button_secondary_text = $attributes['buttonSecondaryText'] ?? '';
-$button_secondary_url  = $attributes['buttonSecondaryUrl'] ?? '#';
-$image_url             = $attributes['imageUrl'] ?? '';
-$image_alt             = $attributes['imageAlt'] ?? 'Hero Image';
-$title_font_size       = isset( $attributes['titleFontSize'] ) ? (int) $attributes['titleFontSize'] : 56;
-$description_font_size = isset( $attributes['descriptionFontSize'] ) ? (int) $attributes['descriptionFontSize'] : 20;
-
-$wrapper_attributes = get_block_wrapper_attributes(
-	[
-		'class' => 'hero',
-	]
-);
+	$title                 = $attributes['title'] ?? '';
+	$description           = $attributes['description'] ?? '';
+	$button_primary_text   = $attributes['buttonPrimaryText'] ?? '';
+	$button_primary_url    = $attributes['buttonPrimaryUrl'] ?? '#';
+	$button_secondary_text = $attributes['buttonSecondaryText'] ?? '';
+	$button_secondary_url  = $attributes['buttonSecondaryUrl'] ?? '#';
+	$image_url             = $attributes['imageUrl'] ?? '';
+	$image_alt             = $attributes['imageAlt'] ?? 'Hero Image';
+	$title_font_size       = isset( $attributes['titleFontSize'] ) ? (int) $attributes['titleFontSize'] : 56;
+	$description_font_size = isset( $attributes['descriptionFontSize'] ) ? (int) $attributes['descriptionFontSize'] : 20;
 ?>
 
-<section <?php echo $wrapper_attributes; ?>>
+<section class="hero alignfull">
 	<div class="hero__container wrap">
 		<div class="hero__content">
 			<?php if ( $title ) : ?>
