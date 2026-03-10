@@ -1,0 +1,98 @@
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/benefits/style.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+.benefits {
+  text-align: center;
+}
+
+.benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2rem;
+  margin-bottom: 72px;
+}
+
+.benefits__item {
+  background: linear-gradient(160deg, #EE1251 0%, #6729C1 59%, #1D35FD 100%);
+  padding: 3px;
+  border-radius: 10px;
+  min-height: 270px;
+  font-weight: 500;
+}
+
+.benefits__item-inner {
+  background: #fff;
+  height: 100%;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.125rem;
+  padding-top: 39px;
+  padding: 39px 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 300ms;
+  line-height: 1.2;
+}
+
+.benefits__item-inner:hover {
+  background: none;
+  color: #fff;
+}
+
+.benefits__item-inner:hover svg path {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.benefits__filters {
+  border: 2px solid var(--color-primary);
+  border-radius: 2rem;
+  height: 44px;
+  display: inline-flex;
+  padding: 2px;
+  gap: 0.5rem;
+}
+
+.benefits__filters-wrap {
+  text-align: center;
+  margin-bottom: 71px;
+}
+
+.benefits__filter {
+  font-size: 1.25rem;
+  font-weight: 400;
+  background: none;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0 2rem;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.benefits__filter:hover,
+.benefits__filter.is-active {
+  color: var(--color-light);
+  background: var(--color-secondary);
+}
+
+.benefits__load-more {
+  font-size: 1.25rem;
+  height: 60px;
+  padding: 0 3rem;
+  color: var(--color-light);
+  background: var(--color-secondary);
+  border-radius: 2rem;
+}
+
+.benefits__load-more:hover {
+  filter: brightness(1.2);
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  background: none;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

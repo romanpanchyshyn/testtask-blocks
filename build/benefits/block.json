@@ -1,0 +1,45 @@
+{
+  "apiVersion": 3,
+  "name": "testtask-core/benefits",
+  "title": "Benefits Section",
+  "category": "widgets",
+  "icon": "awards",
+  "description": "Benefits section with AJAX filter.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Some H2 title"
+    },
+    "postsPerPage": {
+      "type": "number",
+      "default": 6
+    },
+    "showFilters": {
+      "type": "boolean",
+      "default": true
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "80px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "80px"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}
