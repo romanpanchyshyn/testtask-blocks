@@ -26,6 +26,7 @@
   display: grid;
   align-items: center;
   grid-template-columns: 660px var(--_media-width);
+  min-height: 690px;
 }
 
 .admin-bar .hero__container {

@@ -76,6 +76,14 @@
   background: var(--color-secondary);
 }
 
+.benefit-card__text {
+  font-size: 1.25rem;
+}
+
+.benefit-card__text p {
+  margin: 0;
+}
+
 .benefits__load-more {
   font-size: 1.25rem;
   height: 60px;
@@ -87,10 +95,4 @@
 
 .benefits__load-more:hover {
   filter: brightness(1.2);
-}
-
-button {
-  border: 0;
-  cursor: pointer;
-  background: none;
 }

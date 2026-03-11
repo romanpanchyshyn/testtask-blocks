@@ -14,7 +14,6 @@
     left: 0;
     bottom: 0;
 }
-
 .hero__container {
     position: relative;
     color: #fff;
@@ -22,11 +21,11 @@
     display: grid;
     align-items: center;
     grid-template-columns: 660px var(--_media-width);
+    min-height: 690px;
 }
 .admin-bar .hero__container {
     height: calc(100dvh - 32px);
 }
-
 .hero__media {
     position: relative;
     height: 100%;
