@@ -4,37 +4,14 @@
   "title": "Hero Section",
   "category": "widgets",
   "icon": "cover-image",
-  "description": "Custom hero section block.",
+  "description": "Custom hero section block with limited inner blocks.",
   "supports": {
-    "html": false
+    "html": false,
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
-    "align": {
-      "type": "string",
-      "default": "full"
-    },
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "buttonPrimaryText": {
-      "type": "string",
-      "default": "Book a demo"
-    },
-    "buttonPrimaryUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "buttonSecondaryText": {
-      "type": "string",
-      "default": "Contact Us"
-    },
-    "buttonSecondaryUrl": {
-      "type": "string",
-      "default": ""
-    },
     "imageUrl": {
       "type": "string",
       "default": ""
@@ -46,18 +23,10 @@
     "imageAlt": {
       "type": "string",
       "default": "Hero Image"
-    },
-    "titleFontSize": {
-      "type": "number",
-      "default": 64
-    },
-    "descriptionFontSize": {
-      "type": "number",
-      "default": 24
     }
   },
   "editorScript": "file:./index.js",
-  "style": "file:./style-index.css",
   "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

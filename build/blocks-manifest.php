@@ -56,6 +56,38 @@ return array(
 		'title' => 'Hero Section',
 		'category' => 'widgets',
 		'icon' => 'cover-image',
+		'description' => 'Custom hero section block with limited inner blocks.',
+		'supports' => array(
+			'html' => false,
+			'align' => array(
+				'full'
+			)
+		),
+		'attributes' => array(
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'imageAlt' => array(
+				'type' => 'string',
+				'default' => 'Hero Image'
+			)
+		),
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php'
+	),
+	'hero2' => array(
+		'apiVersion' => 3,
+		'name' => 'testtask-core/hero2',
+		'title' => 'Hero Section 2',
+		'category' => 'widgets',
+		'icon' => 'cover-image',
 		'description' => 'Custom hero section block.',
 		'supports' => array(
 			'html' => false

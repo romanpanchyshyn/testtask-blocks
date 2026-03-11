@@ -18,8 +18,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/hero/block.json");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/hero/style.scss");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/hero/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/hero/editor.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/hero/style.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 
@@ -30,23 +30,40 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/buttons'];
+const HERO_TEMPLATE = [['core/heading', {
+  placeholder: 'Add hero title...',
+  level: 1,
+  style: {
+    typography: {
+      fontSize: '64px'
+    }
+  }
+}], ['core/paragraph', {
+  placeholder: 'Add hero description...',
+  style: {
+    typography: {
+      fontSize: '24px'
+    }
+  }
+}], ['core/buttons', {}, [['core/button', {
+  backgroundColor: 'primary',
+  text: 'Learn more',
+  style: {
+    border: {
+      radius: 0
+    }
+  }
+}]]]];
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
   edit({
     attributes,
     setAttributes
   }) {
     const {
-      buttonPrimaryText,
-      buttonPrimaryUrl,
-      buttonSecondaryText,
-      buttonSecondaryUrl,
       imageUrl,
       imageId,
-      imageAlt,
-      title,
-      description,
-      titleFontSize,
-      descriptionFontSize
+      imageAlt
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       className: 'hero alignfull'
@@ -66,206 +83,94 @@ __webpack_require__.r(__webpack_exports__);
       });
     };
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hero Settings', 'testtask'),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            style: {
-              marginBottom: '16px'
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
-                onSelect: onSelectImage,
-                allowedTypes: ['image'],
-                value: imageId,
-                render: ({
-                  open
-                }) => imageUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "hero__image-wrapper",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                    src: imageUrl,
-                    alt: imageAlt
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                    style: {
-                      display: 'flex',
-                      gap: '8px',
-                      marginTop: '10px'
-                    },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                      variant: "secondary",
-                      onClick: open,
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Replace Image', 'testtask')
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                      variant: "tertiary",
-                      isDestructive: true,
-                      onClick: removeImage,
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Image', 'testtask')
-                    })]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hero Image', 'testtask'),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+              onSelect: onSelectImage,
+              allowedTypes: ['image'],
+              value: imageId,
+              render: ({
+                open
+              }) => imageUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "hero__image-wrapper",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                  src: imageUrl,
+                  alt: imageAlt
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  style: {
+                    display: 'flex',
+                    gap: '8px',
+                    marginTop: '10px'
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+                    variant: "secondary",
+                    onClick: open,
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Replace Image', 'testtask')
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+                    variant: "tertiary",
+                    isDestructive: true,
+                    onClick: removeImage,
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Image', 'testtask')
                   })]
-                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                  variant: "primary",
-                  onClick: open,
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Hero Image', 'testtask')
-                })
+                })]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+                variant: "primary",
+                onClick: open,
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Hero Image', 'testtask')
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Primary Button Text', 'testtask'),
-            value: buttonPrimaryText,
-            onChange: value => setAttributes({
-              buttonPrimaryText: value
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Primary Button URL', 'testtask'),
-            value: buttonPrimaryUrl,
-            onChange: value => setAttributes({
-              buttonPrimaryUrl: value
-            }),
-            placeholder: "https://example.com"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Secondary Button Text', 'testtask'),
-            value: buttonSecondaryText,
-            onChange: value => setAttributes({
-              buttonSecondaryText: value
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Secondary Button URL', 'testtask'),
-            value: buttonSecondaryUrl,
-            onChange: value => setAttributes({
-              buttonSecondaryUrl: value
-            }),
-            placeholder: "https://example.com"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image Alt', 'testtask'),
-            value: imageAlt,
-            onChange: value => setAttributes({
-              imageAlt: value
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography', 'testtask'),
-          initialOpen: false,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title Font Size', 'testtask'),
-            value: titleFontSize,
-            onChange: value => setAttributes({
-              titleFontSize: value
-            }),
-            min: 24,
-            max: 100
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Description Font Size', 'testtask'),
-            value: descriptionFontSize,
-            onChange: value => setAttributes({
-              descriptionFontSize: value
-            }),
-            min: 14,
-            max: 40
-          })]
-        })]
+          })
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("section", {
         ...blockProps,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "hero__container wrap",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "hero__content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-              tagName: "h1",
-              className: "hero__title",
-              value: title,
-              onChange: value => setAttributes({
-                title: value
-              }),
-              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add hero title...', 'testtask'),
-              style: {
-                fontSize: `${titleFontSize}px`
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-              tagName: "div",
-              className: "hero__description",
-              value: description,
-              onChange: value => setAttributes({
-                description: value
-              }),
-              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add hero description...', 'testtask'),
-              style: {
-                fontSize: `${descriptionFontSize}px`
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-              className: "hero__cta",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-                tagName: "a",
-                className: "btn-hero btn-hero--primary",
-                value: buttonPrimaryText,
-                onChange: value => setAttributes({
-                  buttonPrimaryText: value
-                }),
-                placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Primary button text', 'testtask'),
-                allowedFormats: []
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-                tagName: "a",
-                className: "btn-hero",
-                value: buttonSecondaryText,
-                onChange: value => setAttributes({
-                  buttonSecondaryText: value
-                }),
-                placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Secondary button text', 'testtask'),
-                allowedFormats: []
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
+              allowedBlocks: ALLOWED_BLOCKS,
+              template: HERO_TEMPLATE,
+              templateLock: false
+            })
+          }), imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "hero__media",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
-                onSelect: onSelectImage,
-                allowedTypes: ['image'],
-                value: imageId,
-                render: ({
-                  open
-                }) => imageUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "hero__media-inner",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                    src: imageUrl,
-                    alt: imageAlt,
-                    onClick: open,
-                    style: {
-                      cursor: 'pointer'
-                    }
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                    className: "hero__media-actions",
-                    style: {
-                      display: 'flex',
-                      gap: '8px',
-                      marginTop: '12px'
-                    },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                      variant: "secondary",
-                      onClick: open,
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Replace Image', 'testtask')
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                      variant: "tertiary",
-                      isDestructive: true,
-                      onClick: removeImage,
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Image', 'testtask')
-                    })]
-                  })]
-                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "hero__image-placeholder",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-                    variant: "primary",
-                    onClick: open,
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Hero Image', 'testtask')
-                  })
-                })
-              })
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+              src: imageUrl,
+              alt: imageAlt
             })
           })]
         })
       })]
     });
   },
-  save() {
-    return null;
+  save({
+    attributes
+  }) {
+    const {
+      imageUrl,
+      imageAlt
+    } = attributes;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
+      className: 'hero alignfull'
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("section", {
+      ...blockProps,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "hero__container wrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "hero__content",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {})
+        }), imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "hero__media",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+            src: imageUrl,
+            alt: imageAlt
+          })
+        })]
+      })
+    });
   }
 });
 
@@ -351,7 +256,7 @@ module.exports = window["wp"]["i18n"];
   \*****************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"testtask-core/hero","title":"Hero Section","category":"widgets","icon":"cover-image","description":"Custom hero section block.","supports":{"html":false},"attributes":{"align":{"type":"string","default":"full"},"title":{"type":"string"},"description":{"type":"string"},"buttonPrimaryText":{"type":"string","default":"Book a demo"},"buttonPrimaryUrl":{"type":"string","default":""},"buttonSecondaryText":{"type":"string","default":"Contact Us"},"buttonSecondaryUrl":{"type":"string","default":""},"imageUrl":{"type":"string","default":""},"imageId":{"type":"number","default":0},"imageAlt":{"type":"string","default":"Hero Image"},"titleFontSize":{"type":"number","default":64},"descriptionFontSize":{"type":"number","default":24}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"testtask-core/hero","title":"Hero Section","category":"widgets","icon":"cover-image","description":"Custom hero section block with limited inner blocks.","supports":{"html":false,"align":["full"]},"attributes":{"imageUrl":{"type":"string","default":""},"imageId":{"type":"number","default":0},"imageAlt":{"type":"string","default":"Hero Image"}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ }
 
