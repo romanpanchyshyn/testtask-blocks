@@ -32,7 +32,7 @@
 					class="hero__description"
 					style="font-size: <?php echo esc_attr( $description_font_size ); ?>px;"
 				>
-					<?php echo wp_kses_post( $description ); ?>
+					<?php echo wpautop( $description ); ?>
 				</div>
 			<?php endif; ?>
 
